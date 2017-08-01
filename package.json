@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com/idenisovs/react-reflex-grid"
+    "url": "git@github.com:idenisovs/react-reflex-grid.git"
   },
   "keywords": [
     "React",
@@ -16,7 +16,7 @@
     "Grid"
   ],
   "author": "I. Denisovs",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "react": "^15.6.1",
     "reflex-grid": "^1.5.0"
