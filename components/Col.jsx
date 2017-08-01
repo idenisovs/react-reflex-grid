@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import 'reflex-grid';
 
 class Col extends React.Component {
     constructor(props) {
@@ -10,7 +11,13 @@ class Col extends React.Component {
     }
 
     render() {
+        let className = `grid__${this.props.type}`;
 
+        return (
+            <div className={className}>
+                {this.props.children}
+            </div>
+        );
     }
 }
 
