@@ -1,0 +1,40 @@
+{
+  "name": "react-reflex-grid",
+  "version": "1.0.0",
+  "description": "This is React implementation for Reflex-Grid lib.",
+  "main": "dist/react-reflex-grid.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/idenisovs/react-reflex-grid"
+  },
+  "keywords": [
+    "React",
+    "Reflex",
+    "Grid"
+  ],
+  "author": "I. Denisovs",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.6.1",
+    "reflex-grid": "^1.5.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.2",
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "classnames": "^2.2.5",
+    "classnames-loader": "^2.0.0",
+    "css-loader": "^0.26.1",
+    "file-loader": "^0.9.0",
+    "node-sass": "^4.1.1",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.14.0"
+  }
+}
