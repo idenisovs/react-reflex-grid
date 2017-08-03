@@ -11,7 +11,7 @@ class Col extends React.Component {
     }
 
     render() {
-        let className = `grid__${this.props.type}`;
+        let className = `grid__col-${this.props.col}`;
 
         return (
             <div className={className}>
