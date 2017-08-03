@@ -5,7 +5,8 @@
   "main": "dist/react-reflex-grid.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack --watch --color --progress"
+    "webpack": "webpack --watch --color --progress",
+    "setup": "npm install && webpack --color --progress"
   },
   "repository": {
     "type": "git",
