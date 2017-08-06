@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import 'reflex-grid';
 
 class Col extends React.Component {
@@ -20,5 +21,9 @@ class Col extends React.Component {
         );
     }
 }
+
+Col.propTypes = {
+    col: PropTypes.string.isRequired
+};
 
 export default Col;
