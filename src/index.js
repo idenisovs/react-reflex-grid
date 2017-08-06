@@ -1,5 +1,5 @@
 /**
- * Created by I.Denisovs on 01.08.2017.
+ * Created by I. Denisovs on 06.08.2017..
  */
 
 import Row from './components/Row.jsx';
