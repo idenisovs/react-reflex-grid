@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import 'reflex-grid';
 
@@ -19,5 +20,9 @@ class Row extends React.Component {
         )
     }
 }
+
+Row.propTypes = {
+    children: PropTypes.element.isRequired
+};
 
 export default Row;
