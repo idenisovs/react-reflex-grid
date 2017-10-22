@@ -11,9 +11,9 @@ class Col extends React.Component {
     constructor(props) {
         super(props);
 
-        this.size = props.col || props.size || (props.auto ? 'auto' : '');
+        this.size = props.col || props.size || (props.auto ? 'auto' : null);
 
-        if (!this.size && this.size.length === 0) {
+        if (!this.size) {
             let message = 'Column size or auto property should be defined!';
             console.error(message);
             return new Error(message);
@@ -21,7 +21,7 @@ class Col extends React.Component {
     }
 
     render() {
-        let className =`col-${this.size}`;
+        let className = this.makeClassName();
 
         return (
             <div className={classNames(className, this.props.className)}>
@@ -29,11 +29,35 @@ class Col extends React.Component {
             </div>
         );
     }
+
+    makeClassName() {
+        let nameParts = [ 'col' ];
+
+        let breakpoint = this.findBreakpoint();
+
+        if (breakpoint) {
+            nameParts.push(breakpoint);
+        }
+
+        nameParts.push(this.size);
+
+        return nameParts.join('-');
+    }
+
+    findBreakpoint() {
+        let breakpoints = [ 'xlg', 'lg', 'md', 'sm', 'xs' ];
+
+        return breakpoints.find((bp) => {
+            if (bp in this.props) {
+                return bp;
+            }
+        })
+    }
 }
 
 Col.propTypes = {
     col: PropTypes.string,
-    size: PropTypes.string,
+    size: PropTypes.number,
     auto: PropTypes.bool
 };
 
