@@ -4,6 +4,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import 'reflex-grid';
 
 class Col extends React.Component {
@@ -12,10 +13,10 @@ class Col extends React.Component {
     }
 
     render() {
-        let className = `grid__col-${this.props.col}`;
+        let className = `col-${this.props.col}`;
 
         return (
-            <div className={className}>
+            <div className={classNames(className, this.props.className)}>
                 {this.props.children}
             </div>
         );

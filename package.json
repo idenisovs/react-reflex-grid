@@ -1,6 +1,6 @@
 {
   "name": "react-reflex-grid",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "This is React implementation for Reflex-Grid lib.",
   "main": "lib/index.js",
   "scripts": {
@@ -22,7 +22,7 @@
   "dependencies": {
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
-    "reflex-grid": "^1.5.0"
+    "reflex-grid": "^2.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

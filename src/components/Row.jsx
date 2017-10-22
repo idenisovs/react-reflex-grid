@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import classNames from 'classnames';
 import 'reflex-grid';
 
 class Row extends React.Component {
@@ -12,7 +13,7 @@ class Row extends React.Component {
 
     render() {
         return (
-            <div className="grid">
+            <div className={classNames("grid", this.props.className)}>
                 {this.props.children}
             </div>
         )
