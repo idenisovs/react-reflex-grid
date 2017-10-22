@@ -2,6 +2,9 @@
 React.js wrapper for [reflex-grid](http://leejordan.github.io/reflex/docs/) library. 
 
 ## Usage
+
+### Simple usage
+
 ```jsx harmony
 <Row>
     <Col col="6">COL A</Col>
@@ -15,6 +18,14 @@ or
     <Col col="md-3">COL Y</Col>
     <Col col="md-3">COL Z</Col>
     <Col col="md-3">COL R</Col>
+</Row>
+```
+
+### Apply style classes
+```jsx harmony
+<Row className="bg">
+    <Col col="6" className="fg">COL A</Col>
+    <Col col="6" className="fg">COL B</Col>
 </Row>
 ```
 
