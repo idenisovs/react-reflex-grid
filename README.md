@@ -12,10 +12,9 @@ Column element. The following properties may be set:
 - `size` - the size of column. Should be set as a number: `<Col size={6}>...</Col>`.
 - `col` (**deprecated**) - the size of column. Should be set as a string, like `<Col col="6">` or `Col col="md-6">`.
 - `auto` - set column size to auto. Example: `<Col auto>...</Col>`.
-- `xs`, `sm`, `md`, `lg`, `xlg` - set the breakpoint for column. Example: `<Col size={6} md>...</Col>`. For more information about breakpoints, please see http://reflexgrid.com/docs/#breakpoints
+- `xs`, `sm`, `md`, `lg`, `xlg` - set the breakpoint for column. Example: `<Col size={6} md>...</Col>`. 
+For more information about breakpoints, please see [breakpoints](http://reflexgrid.com/docs/#breakpoints).
 - `bleed` - remove the internal padding on the specific column. Example: `<Col bleed>....</Col>`.
-
-For more information about valid prefixes, please, see the following article: [Breakpoints](http://leejordan.github.io/reflex/docs/#breakpoints)
 
 ## Usage
 
