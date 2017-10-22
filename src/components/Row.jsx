@@ -13,8 +13,10 @@ class Row extends React.Component {
     }
 
     render() {
+        let bleed = { 'grid-bleed': this.props.bleed };
+
         return (
-            <div className={classNames("grid", this.props.className)}>
+            <div className={classNames("grid", bleed, this.props.className)}>
                 {this.props.children}
             </div>
         )
@@ -22,7 +24,8 @@ class Row extends React.Component {
 }
 
 Row.propTypes = {
-    children: PropTypes.oneOfType([ PropTypes.element, PropTypes.array ]).isRequired
+    children: PropTypes.oneOfType([ PropTypes.element, PropTypes.array ]).isRequired,
+    bleed: PropTypes.bool
 };
 
 export default Row;

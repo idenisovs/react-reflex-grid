@@ -22,9 +22,10 @@ class Col extends React.Component {
 
     render() {
         let className = this.makeClassName();
+        let bleed = { 'col-bleed': this.props.bleed };
 
         return (
-            <div className={classNames(className, this.props.className)}>
+            <div className={classNames(className, bleed, this.props.className)}>
                 {this.props.children}
             </div>
         );
