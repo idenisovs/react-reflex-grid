@@ -22,7 +22,7 @@ class Row extends React.Component {
 }
 
 Row.propTypes = {
-    children: PropTypes.element.isRequired
+    children: PropTypes.oneOfType([ PropTypes.element, PropTypes.array ]).isRequired
 };
 
 export default Row;
