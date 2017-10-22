@@ -32,6 +32,11 @@ class Col extends React.Component {
     }
 
     makeClassName() {
+        if (this.props.col) {
+            console.warn('col property is deprecated!');
+            return 'col-' + this.props.col;
+        }
+
         let nameParts = [ 'col' ];
 
         let breakpoint = this.findBreakpoint();
