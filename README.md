@@ -3,9 +3,19 @@ React.js wrapper for [reflex-grid](http://leejordan.github.io/reflex/docs/) libr
 
 ## Components
 
+### Container
+Reflex grid has a responsive `.container` class available which uses a combination of margins and padding to maintain layout between elements both inside and outside of the grid. 
+For more information about it, please see [container article](http://reflexgrid.com/docs/#containers).
+
+The following properties may be set:
+- `full` - make the full-width containing element. Example: `<Container full>...</Container>`.
+- `className` - additional CSS classes for component.
+
+
 ### Row
 Container for columns. The following properties may be set:
 - `bleed` - remove the internal padding on the entire grid.
+- `className` - additional CSS classes for component.
 
 ### Col
 Column element. The following properties may be set:
@@ -15,6 +25,7 @@ Column element. The following properties may be set:
 - `xs`, `sm`, `md`, `lg`, `xlg` - set the breakpoint for column. Example: `<Col size={6} md>...</Col>`. 
 For more information about breakpoints, please see [breakpoints](http://reflexgrid.com/docs/#breakpoints).
 - `bleed` - remove the internal padding on the specific column. Example: `<Col bleed>....</Col>`.
+- `className` - additional CSS classes for component.
 
 ## Usage
 
@@ -76,4 +87,23 @@ or
     <Col size={6} bleed>COL A</Col>
     <Col size={6}>COL B</Col>
 </Row>
+```
+
+### Container
+#### Simple
+```jsx harmony
+<Container>
+    <Row>
+        <Col size={12}>Col Size 12</Col>
+    </Row>
+</Container>
+```
+
+#### Container full
+```jsx harmony
+<Container full>
+    <Row>
+        <Col size={12}>Col Size 12</Col>
+    </Row>
+</Container>
 ```
