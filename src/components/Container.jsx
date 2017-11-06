@@ -5,18 +5,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import AbstractGridComponent from './Abstract.jsx';
 import 'reflex-grid';
 
-class Container extends React.Component {
+class Container extends AbstractGridComponent {
     constructor(props) {
         super(props);
     }
 
     render() {
         let className = this.getClassName();
+        let hidden = this.getHiddenClasses();
 
         return (
-            <div className={classNames(className, this.props.className)}>
+            <div className={classNames(className, hidden, this.props.className)}>
                 {this.props.children}
             </div>
         );
@@ -34,7 +36,8 @@ class Container extends React.Component {
 }
 
 Container.propTypes = {
-    full: PropTypes.bool
+    full: PropTypes.bool,
+    hidden: PropTypes.string
 };
 
 export default Container;
