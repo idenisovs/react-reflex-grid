@@ -5,9 +5,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import AbstractGridComponent from './Abstract.jsx';
 import 'reflex-grid';
 
-class Col extends React.Component {
+class Col extends AbstractGridComponent {
     constructor(props) {
         super(props);
 
@@ -61,17 +62,7 @@ class Col extends React.Component {
         })
     }
 
-    getHiddenClasses() {
-        if (!this.props.hidden) {
-            return;
-        }
 
-        let hidden = this.props.hidden.replace(/\s/g, '').split(',');
-
-        return hidden.map((bp) => {
-            return 'hidden-' + bp;
-        });
-    }
 }
 
 Col.propTypes = {
