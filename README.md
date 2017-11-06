@@ -26,6 +26,7 @@ Column element. The following properties may be set:
 For more information about breakpoints, please see [breakpoints](http://reflexgrid.com/docs/#breakpoints).
 - `bleed` - remove the internal padding on the specific column. Example: `<Col bleed>....</Col>`.
 - `className` - additional CSS classes for component.
+- `hidden` - allow to hide column at the specific breakpoints. Example: `<Col hidden="xs,sm">...</Col>"`.
 
 ## Usage
 
@@ -106,4 +107,16 @@ or
         <Col size={12}>Col Size 12</Col>
     </Row>
 </Container>
+```
+
+### Hidden
+```jsx harmony
+<Row>
+    <Col auto>
+        <h3>Auto Column</h3>
+    </Col>
+    <Col size={6} hidden='xxs,xs,sm'>
+        <h3>Col Size 6, hidden at XS, SM, visible at XXS, MD, LG, XLG.</h3>
+    </Col>
+</Row>
 ```

@@ -23,9 +23,10 @@ class Col extends React.Component {
     render() {
         let className = this.makeClassName();
         let bleed = { 'col-bleed': this.props.bleed };
+        let hidden = this.getHiddenClasses();
 
         return (
-            <div className={classNames(className, bleed, this.props.className)}>
+            <div className={classNames(className, bleed, hidden, this.props.className)}>
                 {this.props.children}
             </div>
         );
@@ -59,12 +60,25 @@ class Col extends React.Component {
             }
         })
     }
+
+    getHiddenClasses() {
+        if (!this.props.hidden) {
+            return;
+        }
+
+        let hidden = this.props.hidden.replace(/\s/g, '').split(',');
+
+        return hidden.map((bp) => {
+            return 'hidden-' + bp;
+        });
+    }
 }
 
 Col.propTypes = {
     col: PropTypes.string,
     size: PropTypes.number,
-    auto: PropTypes.bool
+    auto: PropTypes.bool,
+    hidden: PropTypes.string
 };
 
 export default Col;
