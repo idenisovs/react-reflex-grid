@@ -5,18 +5,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import AbstractGridComponent from './Abstract.jsx';
 import 'reflex-grid';
 
-class Row extends React.Component {
+class Row extends AbstractGridComponent {
     constructor(props) {
         super(props);
     }
 
     render() {
         let bleed = { 'grid-bleed': this.props.bleed };
+        let hidden = this.getHiddenClasses();
 
         return (
-            <div className={classNames("grid", bleed, this.props.className)}>
+            <div className={classNames("grid", bleed, hidden, this.props.className)}>
                 {this.props.children}
             </div>
         )
@@ -25,7 +27,8 @@ class Row extends React.Component {
 
 Row.propTypes = {
     children: PropTypes.oneOfType([ PropTypes.element, PropTypes.array ]).isRequired,
-    bleed: PropTypes.bool
+    bleed: PropTypes.bool,
+    hidden: PropTypes.string
 };
 
 export default Row;
