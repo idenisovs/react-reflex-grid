@@ -10,12 +10,13 @@ For more information about it, please see [container article](http://reflexgrid.
 The following properties may be set:
 - `full` - make the full-width containing element. Example: `<Container full>...</Container>`.
 - `className` - additional CSS classes for component.
-
+- `hidden` - allow to hide whole row at the specific breakpoints. Allowed breakpoints: XXS, XS, SM, MD, LG, XLG. Example: `<Container hidden="xs,sm">...</Container>"`.
 
 ### Row
 Container for columns. The following properties may be set:
 - `bleed` - remove the internal padding on the entire grid.
 - `className` - additional CSS classes for component.
+- `hidden` - allow to hide whole row at the specific breakpoints. Allowed breakpoints: XXS, XS, SM, MD, LG, XLG. Example: `<Row hidden="xs,sm">...</Col>"`.
 
 ### Col
 Column element. The following properties may be set:
@@ -26,7 +27,7 @@ Column element. The following properties may be set:
 For more information about breakpoints, please see [breakpoints](http://reflexgrid.com/docs/#breakpoints).
 - `bleed` - remove the internal padding on the specific column. Example: `<Col bleed>....</Col>`.
 - `className` - additional CSS classes for component.
-- `hidden` - allow to hide column at the specific breakpoints. Example: `<Col hidden="xs,sm">...</Col>"`.
+- `hidden` - allow to hide column at the specific breakpoints. Allowed breakpoints: XXS, XS, SM, MD, LG, XLG. Example: `<Col hidden="xs,sm">...</Col>"`.
 
 ## Usage
 
@@ -110,6 +111,8 @@ or
 ```
 
 ### Hidden
+
+#### Col
 ```jsx harmony
 <Row>
     <Col auto>
@@ -119,4 +122,30 @@ or
         <h3>Col Size 6, hidden at XS, SM, visible at XXS, MD, LG, XLG.</h3>
     </Col>
 </Row>
+```
+
+#### Row
+```jsx harmony
+<Row hidden='xxs,xs,sm'>
+    <Col size={6}>
+        <h3>Col Size 6.</h3>
+    </Col>
+    <Col size={6}>
+        <h3>Col Size 6.</h3>
+    </Col>
+</Row>
+```
+
+#### Container
+```jsx harmony
+<Container hidden='xxs,xs,sm'>
+    <Row>
+        <Col size={6}>
+            <h3>Col Size 6.</h3>
+        </Col>
+        <Col size={6}>
+            <h3>Col Size 6.</h3>
+        </Col>
+    </Row>
+</Container>
 ```
