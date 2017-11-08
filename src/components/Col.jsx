@@ -25,9 +25,10 @@ class Col extends AbstractGridComponent {
         let className = this.makeClassName();
         let bleed = this.getBleedClass();
         let hidden = this.getHiddenClasses();
+        let order = this.props.order ? 'order-' + this.props.order : null;
 
         return (
-            <div className={classNames(className, bleed, hidden, this.props.className)}>
+            <div className={classNames(className, bleed, hidden, order, this.props.className)}>
                 {this.props.children}
             </div>
         );
@@ -79,7 +80,8 @@ Col.propTypes = {
     size: PropTypes.number,
     auto: PropTypes.bool,
     hidden: PropTypes.string,
-    bleed: PropTypes.oneOfType([ PropTypes.bool, PropTypes.string ])
+    bleed: PropTypes.oneOfType([ PropTypes.bool, PropTypes.string ]),
+    order: PropTypes.number
 };
 
 export default Col;

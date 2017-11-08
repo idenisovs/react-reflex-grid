@@ -29,6 +29,7 @@ For more information about breakpoints, please see [breakpoints](http://reflexgr
 - `bleed` - remove the internal padding on the specific column. Example: `<Col bleed>....</Col>`. May take `"x"` or `"y"` value, which removes only vertical or horizontal paddings. Example: `<Col bleed="x">....</Col>`, `<Col bleed="y">....</Col>`.
 - `className` - additional CSS classes for component.
 - `hidden` - allow to hide column at the specific breakpoints. Allowed breakpoints: XXS, XS, SM, MD, LG, XLG. Example: `<Col hidden="xs,sm">...</Col>"`.
+- `order` - Set the order, in which specified column will be shown in grid. Takes number as value: `<Col order={1}>...</Col>`
 
 ## Usage
 
@@ -169,6 +170,24 @@ or
     </Col>
     <Col size={4}>
         <h3>Col Size 4.</h3>
+    </Col>
+</Row>
+```
+
+### Ordering
+```jsx harmony
+<Row className={style.back}>
+    <Col size={3} order={2}>
+        <h3>B</h3>
+    </Col>
+    <Col size={3} order={1}>
+        <h3>A</h3>
+    </Col>
+    <Col size={3} order={4}>
+        <h3>D</h3>
+    </Col>
+    <Col size={3} order={3}>
+        <h3>C</h3>
     </Col>
 </Row>
 ```
