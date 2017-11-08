@@ -17,6 +17,7 @@ Container for columns. The following properties may be set:
 - `bleed` - remove the internal padding on the entire grid.
 - `className` - additional CSS classes for component.
 - `hidden` - allow to hide whole row at the specific breakpoints. Allowed breakpoints: XXS, XS, SM, MD, LG, XLG. Example: `<Row hidden="xs,sm">...</Col>"`.
+- `align` - when this will be applied to `Row`, then columns will be collapsed to content and aligned to vertical position, as it is set by value of `align`.  It can be set in the following way: `<Row align=["start"|"center"|"end"]>...</Row>`
 
 ### Col
 Column element. The following properties may be set:
@@ -148,4 +149,19 @@ or
         </Col>
     </Row>
 </Container>
+```
+
+### Cross-Axis Align
+```jsx harmony
+<Row align="start">
+    <Col size={4}>
+        <h3>Col Size 4.</h3>
+    </Col>
+    <Col size={4}>
+        <h3>Col Size 4.</h3>
+    </Col>
+    <Col size={4}>
+        <h3>Col Size 4.</h3>
+    </Col>
+</Row>
 ```

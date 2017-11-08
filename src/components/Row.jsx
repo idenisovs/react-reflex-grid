@@ -16,9 +16,10 @@ class Row extends AbstractGridComponent {
     render() {
         let bleed = { 'grid-bleed': this.props.bleed };
         let hidden = this.getHiddenClasses();
+        let align = this.props.align ? 'align-' + this.props.align : null;
 
         return (
-            <div className={classNames("grid", bleed, hidden, this.props.className)}>
+            <div className={classNames("grid", bleed, hidden, align, this.props.className)}>
                 {this.props.children}
             </div>
         )
@@ -28,7 +29,8 @@ class Row extends AbstractGridComponent {
 Row.propTypes = {
     children: PropTypes.oneOfType([ PropTypes.element, PropTypes.array ]).isRequired,
     bleed: PropTypes.bool,
-    hidden: PropTypes.string
+    hidden: PropTypes.string,
+    align: PropTypes.oneOf(['start', 'center', 'end'])
 };
 
 export default Row;
