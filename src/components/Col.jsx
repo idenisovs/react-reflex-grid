@@ -23,7 +23,7 @@ class Col extends AbstractGridComponent {
 
     render() {
         let className = this.makeClassName();
-        let bleed = { 'col-bleed': this.props.bleed };
+        let bleed = this.getBleedClass();
         let hidden = this.getHiddenClasses();
 
         return (
@@ -62,14 +62,24 @@ class Col extends AbstractGridComponent {
         })
     }
 
+    getBleedClass() {
+        switch(this.props.bleed) {
+            case 'x':
+            case 'y':
+                return { ['col-bleed-' + this.props.bleed]: true };
+            default:
+                return { 'col-bleed': this.props.bleed };
 
+        }
+    }
 }
 
 Col.propTypes = {
     col: PropTypes.string,
     size: PropTypes.number,
     auto: PropTypes.bool,
-    hidden: PropTypes.string
+    hidden: PropTypes.string,
+    bleed: PropTypes.oneOfType([ PropTypes.bool, PropTypes.string ])
 };
 
 export default Col;
