@@ -17,9 +17,12 @@ class Row extends AbstractGridComponent {
         let bleed = { 'grid-bleed': this.props.bleed };
         let hidden = this.getHiddenClasses();
         let align = this.props.align ? 'align-' + this.props.align : null;
+        let direction = {
+            reverse: {'direction-row-reverse': this.props['direction-row-reverse']}
+        };
 
         return (
-            <div className={classNames("grid", bleed, hidden, align, this.props.className)}>
+            <div className={classNames("grid", bleed, hidden, align, direction.reverse, this.props.className)}>
                 {this.props.children}
             </div>
         )
@@ -30,7 +33,8 @@ Row.propTypes = {
     children: PropTypes.oneOfType([ PropTypes.element, PropTypes.array ]).isRequired,
     bleed: PropTypes.bool,
     hidden: PropTypes.string,
-    align: PropTypes.oneOf(['start', 'center', 'end'])
+    align: PropTypes.oneOf(['start', 'center', 'end']),
+    'direction-row-reverse': PropTypes.bool
 };
 
 export default Row;

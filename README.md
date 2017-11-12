@@ -1,5 +1,7 @@
 # react-reflex-grid
-React.js wrapper for [reflex-grid](http://leejordan.github.io/reflex/docs/) library. 
+React.js wrapper for [reflex-grid](http://leejordan.github.io/reflex/docs/) library.
+
+![Release](https://img.shields.io/npm/v/react-reflex-grid.svg) 
 
 ## Components
 
