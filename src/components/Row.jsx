@@ -13,6 +13,7 @@ class Row extends AbstractGridComponent {
         super(props);
 
         this.allowedDirectionAttributes = [ 'direction-row-reverse', 'direction-column', 'direction-column-reverse' ];
+        this.allowedJustifyAttributes = [ 'justify-end', 'justify-center', 'justify-space-between', 'justify-space-around' ];
     }
 
     render() {
@@ -20,8 +21,12 @@ class Row extends AbstractGridComponent {
         let hidden = this.getHiddenClasses();
         let align = this.props.align ? 'align-' + this.props.align : null;
         let direction = this.getDirectionClass();
+        let justify = this.getJustifyClass();
+        if (justify) {
+            console.log(justify);
+        }
 
-        let classes = classNames("grid", bleed, hidden, align, direction, this.props.className);
+        let classes = classNames("grid", bleed, hidden, align, direction, justify, this.props.className);
 
         return (
             <div className={classes}>
@@ -43,6 +48,20 @@ class Row extends AbstractGridComponent {
 
         return usedDirectionAttributes.pop();
     }
+
+    getJustifyClass() {
+        let usedJustifyAttributes = this.allowedJustifyAttributes.filter((attr) => this.props[attr]);
+
+        if (!usedJustifyAttributes.length) {
+            return null;
+        }
+
+        if (usedJustifyAttributes.length > 1) {
+            console.warn('Many justify attributes used simultaneously:', usedJustifyAttributes.join(', '));
+        }
+
+        return usedJustifyAttributes.pop();
+    }
 }
 
 Row.propTypes = {
@@ -52,7 +71,11 @@ Row.propTypes = {
     align: PropTypes.oneOf(['start', 'center', 'end']),
     'direction-row-reverse': PropTypes.bool,
     'direction-column': PropTypes.bool,
-    'direction-column-reversed': PropTypes.bool
+    'direction-column-reversed': PropTypes.bool,
+    'justify-end': PropTypes.bool,
+    'justify-center': PropTypes.bool,
+    'justify-space-between': PropTypes.bool,
+    'justify-space-around': PropTypes.bool
 };
 
 export default Row;
