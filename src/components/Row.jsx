@@ -13,19 +13,37 @@ class Row extends AbstractGridComponent {
         super(props);
     }
 
+    componentWillMount() {
+        let directionAttributes = this.countDirectionAttributes();
+
+        if (directionAttributes.length > 1) {
+            console.warn('Many direction attributes used simultaneously:', directionAttributes.join(', '));
+        }
+    }
+
     render() {
         let bleed = { 'grid-bleed': this.props.bleed };
         let hidden = this.getHiddenClasses();
         let align = this.props.align ? 'align-' + this.props.align : null;
         let direction = {
-            reverse: {'direction-row-reverse': this.props['direction-row-reverse']}
+            reverse: { 'direction-row-reverse': this.props['direction-row-reverse'] },
+            column: { 'direction-column': this.props['direction-column'] },
+            'column-reverse': { 'direction-column-reverse': this.props['direction-column-reverse'] }
         };
 
+        let classes = classNames("grid", bleed, hidden, align, direction.reverse, direction.column, direction['column-reverse'], this.props.className);
+
         return (
-            <div className={classNames("grid", bleed, hidden, align, direction.reverse, this.props.className)}>
+            <div className={classes}>
                 {this.props.children}
             </div>
         )
+    }
+
+    countDirectionAttributes() {
+        let directionAttributes = ['direction-row-reverse', 'direction-column', 'direction-column-reverse'];
+
+        return directionAttributes.filter((attr) => this.props[attr]);
     }
 }
 
