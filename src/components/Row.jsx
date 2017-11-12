@@ -11,27 +11,17 @@ import 'reflex-grid';
 class Row extends AbstractGridComponent {
     constructor(props) {
         super(props);
-    }
 
-    componentWillMount() {
-        let directionAttributes = this.countDirectionAttributes();
-
-        if (directionAttributes.length > 1) {
-            console.warn('Many direction attributes used simultaneously:', directionAttributes.join(', '));
-        }
+        this.allowedDirectionAttributes = [ 'direction-row-reverse', 'direction-column', 'direction-column-reverse' ];
     }
 
     render() {
         let bleed = { 'grid-bleed': this.props.bleed };
         let hidden = this.getHiddenClasses();
         let align = this.props.align ? 'align-' + this.props.align : null;
-        let direction = {
-            reverse: { 'direction-row-reverse': this.props['direction-row-reverse'] },
-            column: { 'direction-column': this.props['direction-column'] },
-            'column-reverse': { 'direction-column-reverse': this.props['direction-column-reverse'] }
-        };
+        let direction = this.getDirectionClass();
 
-        let classes = classNames("grid", bleed, hidden, align, direction.reverse, direction.column, direction['column-reverse'], this.props.className);
+        let classes = classNames("grid", bleed, hidden, align, direction, this.props.className);
 
         return (
             <div className={classes}>
@@ -40,10 +30,18 @@ class Row extends AbstractGridComponent {
         )
     }
 
-    countDirectionAttributes() {
-        let directionAttributes = ['direction-row-reverse', 'direction-column', 'direction-column-reverse'];
+    getDirectionClass() {
+        let usedDirectionAttributes = this.allowedDirectionAttributes.filter((attr) => this.props[attr]);
 
-        return directionAttributes.filter((attr) => this.props[attr]);
+        if (!usedDirectionAttributes.length) {
+            return null;
+        }
+
+        if (usedDirectionAttributes.length > 1) {
+            console.warn('Many direction attributes used simultaneously:', usedDirectionAttributes.join(', '));
+        }
+
+        return usedDirectionAttributes.pop();
     }
 }
 
@@ -52,7 +50,9 @@ Row.propTypes = {
     bleed: PropTypes.bool,
     hidden: PropTypes.string,
     align: PropTypes.oneOf(['start', 'center', 'end']),
-    'direction-row-reverse': PropTypes.bool
+    'direction-row-reverse': PropTypes.bool,
+    'direction-column': PropTypes.bool,
+    'direction-column-reversed': PropTypes.bool
 };
 
 export default Row;
