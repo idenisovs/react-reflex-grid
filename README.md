@@ -20,6 +20,8 @@ Container for columns. The following properties may be set:
 - `className` - additional CSS classes for component.
 - `hidden` - allow to hide whole row at the specific breakpoints. Allowed breakpoints: XXS, XS, SM, MD, LG, XLG. Example: `<Row hidden="xs,sm">...</Col>"`.
 - `align` - when this will be applied to `Row`, then columns will be collapsed to content and aligned to vertical position, as it is set by value of `align`.  It can be set in the following way: `<Row align=["start"|"center"|"end"]>...</Row>`
+- `direction-row-reverse`, `direction-column`, `direction-column-reversed` - set the direction of columns.
+- `justify-end`, `justify-center`, `justify-space-between`, `justify-space-around` - set the justification of columns.
 
 ### Col
 Column element. The following properties may be set:
@@ -178,7 +180,7 @@ or
 
 ### Ordering
 ```jsx harmony
-<Row className={style.back}>
+<Row>
     <Col size={3} order={2}>
         <h3>B</h3>
     </Col>
@@ -190,6 +192,41 @@ or
     </Col>
     <Col size={3} order={3}>
         <h3>C</h3>
+    </Col>
+</Row>
+```
+
+### Direction
+```jsx harmony
+<Row direction-column-reversed>
+    <Col size={3}>
+        <h3>A</h3>
+    </Col>
+    <Col size={3}>
+        <h3>B</h3>
+    </Col>
+    <Col size={3}>
+        <h3>C</h3>
+    </Col>
+    <Col size={3}>
+        <h3>D</h3>
+    </Col>
+</Row>
+```
+
+### Justification
+Take a look on **size** attribute!
+
+```jsx harmony
+<Row justify-space-between>
+    <Col size={3}>
+        First appear years night there the in them rule.
+    </Col>
+    <Col size={3}>
+        Be can't winged good for also saying first. Shall, fourth Greater cattle.
+    </Col>
+    <Col size={3}>
+        First appear years night there the in them rule.
     </Col>
 </Row>
 ```
