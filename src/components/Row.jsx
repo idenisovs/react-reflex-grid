@@ -22,9 +22,6 @@ class Row extends AbstractGridComponent {
         let align = this.props.align ? 'align-' + this.props.align : null;
         let direction = this.getDirectionClass();
         let justify = this.getJustifyClass();
-        if (justify) {
-            console.log(justify);
-        }
 
         let classes = classNames("grid", bleed, hidden, align, direction, justify, this.props.className);
 
