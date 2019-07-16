@@ -3,20 +3,22 @@ import * as React from 'react';
 /**
  * Class which uses a combination of margins and padding to maintain layout between elements both inside and outside of the grid.
  */
+declare class Container extends React.Component<ContainerProps> {
+    static propTypes: ContainerProps;
+}
 
-declare class Container extends React.Component<ContainerProps> {}
-declare class Row extends React.Component<RowProps> {}
-declare class Col extends React.Component<ColProps> {}
+/**
+ * A container for Col components.
+ */
+declare class Row extends React.Component<RowProps> {
+    static propTypes: RowProps;
+}
 
-interface GridProps<T> extends React.ClassAttributes<T> {
-    /**
-     * The className property is used to set the value of an element's class attribute
-     *
-     * @type string
-     */
-    className?: string;
-
-    hidden?: string,
+/**
+ * A child of Row component, the single Flex item.
+ */
+declare class Col extends React.Component<ColProps> {
+    static propTypes: ColProps;
 }
 
 interface ContainerProps extends GridProps<Container> {
@@ -24,20 +26,9 @@ interface ContainerProps extends GridProps<Container> {
      * Maintains a full width container without a max width but with the same combination of margins and padding.
      *
      * @type boolean
+     * @default false
      */
     full?: boolean;
-}
-
-interface RowProps extends GridProps<Row> {
-    bleed?: boolean;
-    align?: Align;
-    'direction-row-reverse'?: boolean;
-    'direction-column'?: boolean;
-    'direction-column-reversed'?: boolean;
-    'justify-end'?: boolean;
-    'justify-center'?: boolean;
-    'justify-space-between'?: boolean;
-    'justify-space-around'?: boolean;
 }
 
 interface ColProps extends GridProps<Col> {
@@ -48,8 +39,8 @@ interface ColProps extends GridProps<Col> {
     bleed?: boolean | string,
 
     /**
-     * Set the size of column.
-     * @type number - From 1 to 12.
+     * The size of column (from 1 to 12).
+     * @type number
      */
     size: number,
 
@@ -67,6 +58,31 @@ interface ColProps extends GridProps<Col> {
     auto?: boolean,
 
     order?: number
+}
+
+interface RowProps extends GridProps<Row> {
+    bleed?: boolean;
+    /**
+     * Set the horizontal position of Row content.
+     * @type Align
+     */
+    align?: Align;
+    'direction-row-reverse'?: boolean;
+    'direction-column'?: boolean;
+    'direction-column-reversed'?: boolean;
+    'justify-end'?: boolean;
+    'justify-center'?: boolean;
+    'justify-space-between'?: boolean;
+    'justify-space-around'?: boolean;
+}
+
+interface GridProps<T> extends React.ClassAttributes<T> {
+    /**
+     * The className property is used to set the value of an element's class attribute
+     * @type string
+     */
+    className?: string;
+    hidden?: string;
 }
 
 declare enum Align {
