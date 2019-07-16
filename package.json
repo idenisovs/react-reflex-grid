@@ -3,6 +3,7 @@
   "version": "2.7.2",
   "description": "React implementation for Reflex-Grid library.",
   "main": "lib/index.js",
+  "types": "types/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --color --progress",
@@ -27,6 +28,7 @@
     "reflex-grid": "^2.0.4"
   },
   "devDependencies": {
+    "@types/react": "^16.8.23",
     "@babel/core": "^7.5.4",
     "@babel/preset-env": "^7.5.4",
     "@babel/preset-react": "^7.0.0",
