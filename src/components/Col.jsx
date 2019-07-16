@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import classNames from 'classnames';
 import AbstractGridComponent from './Abstract.jsx';
 import 'reflex-grid';
@@ -70,7 +70,6 @@ class Col extends AbstractGridComponent {
                 return { ['col-bleed-' + this.props.bleed]: true };
             default:
                 return { 'col-bleed': this.props.bleed };
-
         }
     }
 }

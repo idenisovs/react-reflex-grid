@@ -3,22 +3,33 @@ import * as React from 'react';
 /**
  * Class which uses a combination of margins and padding to maintain layout between elements both inside and outside of the grid.
  */
-declare class Container extends React.Component<ContainerProps> {}
 
-declare interface ContainerProps {
+declare class Container extends React.Component<ContainerProps> {}
+declare class Row extends React.Component<RowProps> {}
+declare class Col extends React.Component<ColProps> {}
+
+interface GridProps<T> extends React.ClassAttributes<T> {
+    /**
+     * The className property is used to set the value of an element's class attribute
+     *
+     * @type string
+     */
+    className?: string;
+
+    hidden?: string,
+}
+
+interface ContainerProps extends GridProps<Container> {
     /**
      * Maintains a full width container without a max width but with the same combination of margins and padding.
+     *
      * @type boolean
      */
     full?: boolean;
-    hidden?: string;
 }
 
-declare class Row extends React.Component<RowProps> {}
-
-declare interface RowProps extends React.ClassAttributes<Row> {
+interface RowProps extends GridProps<Row> {
     bleed?: boolean;
-    hidden?: string;
     align?: Align;
     'direction-row-reverse'?: boolean;
     'direction-column'?: boolean;
@@ -29,23 +40,32 @@ declare interface RowProps extends React.ClassAttributes<Row> {
     'justify-space-around'?: boolean;
 }
 
-declare class Col extends React.Component<ColProps> {}
-
-
-declare interface ColProps extends React.ClassAttributes<Col> {
-    /**
-     * Set the size of column.
-     * @type number - From 1 to 12.
-     */
-    size: number,
-    col?: string,
-    auto?: boolean,
-    hidden?: string,
+interface ColProps extends GridProps<Col> {
     /**
      * Removes internal padding from a single column element
      * @type boolean - Removes internal padding if true.
      */
     bleed?: boolean | string,
+
+    /**
+     * Set the size of column.
+     * @type number - From 1 to 12.
+     */
+    size: number,
+
+    /**
+     * Set the size of column.
+     * @type string
+     * @deprecated Use size param instead!
+     */
+    col?: string,
+
+    /**
+     * @type boolean
+     * @default false
+     */
+    auto?: boolean,
+
     order?: number
 }
 
