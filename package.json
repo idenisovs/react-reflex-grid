@@ -3,10 +3,11 @@
   "version": "2.5.1",
   "description": "React implementation for Reflex-Grid library.",
   "main": "lib/index.js",
+  "types": "types/index.d.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack --watch --color --progress",
-    "setup": "npm install && webpack --color --progress"
+    "build": "webpack --color --progress",
+    "watch": "npm run build -- --watch"
   },
   "repository": {
     "type": "git",

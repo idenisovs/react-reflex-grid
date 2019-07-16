@@ -21,6 +21,7 @@ const cssRule = {
 
 const webpackConfig = {
     entry: path.join(__dirname, 'src', 'index'),
+    mode: 'development',
     module: {
         rules: [
             reactRule, cssRule
@@ -28,7 +29,9 @@ const webpackConfig = {
     },
     output: {
         path: path.resolve(__dirname, 'lib'),
-        filename: 'index.js'
+        filename: 'index.js',
+        library: '',
+        libraryTarget: 'umd'
     }
 };
 
