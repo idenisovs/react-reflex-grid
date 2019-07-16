@@ -1,6 +1,6 @@
 {
   "name": "react-reflex-grid",
-  "version": "2.5.1",
+  "version": "2.6.0",
   "description": "React implementation for Reflex-Grid library.",
   "main": "lib/index.js",
   "types": "types/index.d.js",
