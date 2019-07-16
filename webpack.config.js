@@ -31,7 +31,7 @@ const webpackConfig = {
         path: path.resolve(__dirname, 'lib'),
         filename: 'index.js',
         libraryTarget: 'umd',
-        library: 'ReactReflexGrid',
+        library: 'react-reflex-grid',
         umdNamedDefine: true
     }
 };
