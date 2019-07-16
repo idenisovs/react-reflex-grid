@@ -20,7 +20,7 @@ const cssRule = {
 };
 
 const webpackConfig = {
-    entry: path.join(__dirname, 'src', 'index'),
+    entry: path.join(__dirname, 'src', 'index.js'),
     mode: 'development',
     module: {
         rules: [
@@ -30,8 +30,9 @@ const webpackConfig = {
     output: {
         path: path.resolve(__dirname, 'lib'),
         filename: 'index.js',
-        library: '',
-        libraryTarget: 'umd'
+        libraryTarget: 'umd',
+        library: 'ReactReflexGrid',
+        umdNamedDefine: true
     }
 };
 
