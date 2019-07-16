@@ -1,24 +1,35 @@
 const path = require('path');
 
-const reactLoader = { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/, query: { presets: ['es2015', 'react'] } };
-const scssLoader = { test: /\.s?css$/, loader: 'style-loader!css-loader!sass-loader' };
-
-const fileName = 'index.js';
-const entryPoint = path.join(__dirname, 'src', fileName);
-const outputDir = path.resolve(__dirname, 'lib');
-
-const config  = {
-    entry: entryPoint,
-    module: {
-        loaders: [ reactLoader, scssLoader ]
-    },
-    output: {
-        path: outputDir,
-        filename: fileName,
-        libraryTarget: 'umd',
-        library: 'ReactReflexGrid',
-        umdNamedDefine: true
+const reactRule = {
+    test: /\.jsx?$/,
+    exclude: /node_modules/,
+    use: {
+        loader: 'babel-loader',
+        options: {
+            presets: [ '@babel/preset-env', '@babel/preset-react' ]
+        }
     }
 };
 
-module.exports = config;
+const cssRule = {
+    test: /\.s?css/,
+    use: [
+        'style-loader',
+        'css-loader'
+    ]
+};
+
+const webpackConfig = {
+    entry: path.join(__dirname, 'src', 'index'),
+    module: {
+        rules: [
+            reactRule, cssRule
+        ]
+    },
+    output: {
+        path: path.resolve(__dirname, 'lib'),
+        filename: 'index.js'
+    }
+};
+
+module.exports = webpackConfig;
