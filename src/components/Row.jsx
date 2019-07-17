@@ -25,6 +25,7 @@ class Row extends AbstractGridComponent {
             this.getDirectionClass(),
             this.getJustifyClass(),
             this.getAlignContentClass(),
+            this.getWrappingClass(),
             this.props.className
         );
 
@@ -84,6 +85,22 @@ class Row extends AbstractGridComponent {
             return 'align-content-space-around';
         }
     }
+
+    getWrappingClass() {
+        if (this.props['wrap']) {
+            return 'wrap';
+        }
+
+        if (this.props['wrap-reverse']) {
+            return 'wrap-reverse';
+        }
+
+        if (this.props['no-wrap']) {
+            return 'no-wrap';
+        }
+
+        return null;
+    }
 }
 
 Row.propTypes = {
@@ -102,7 +119,27 @@ Row.propTypes = {
     'align-content-end': PropTypes.bool,
     'align-content-center': PropTypes.bool,
     'align-content-space-between': PropTypes.bool,
-    'align-content-space-around': PropTypes.bool
+    'align-content-space-around': PropTypes.bool,
+    'no-wrap': (props) => {
+        if (!props['no-wrap']) {
+            return;
+        }
+
+        if (props['no-wrap'] && props['wrap']) {
+            return new Error('no-wrap property shouldn`t be used together with wrap!')
+        }
+
+        if (props['no-wrap'] && props['wrap-reverse']) {
+            return new Error('no-wrap property shouldn`t be used together with wrap-reverse!')
+        }
+
+        if (typeof props['no-wrap'] !== 'boolean') {
+            console.log(typeof props['no-wrap']);
+            return new Error('no-wrap should be boolean!');
+        }
+    },
+    'wrap': PropTypes.bool,
+    'wrap-reverse': PropTypes.bool
 };
 
 export default Row;

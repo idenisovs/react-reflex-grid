@@ -121,6 +121,27 @@ interface RowProps extends GridProps<Row> {
      *
      */
     'align-content-space-around'?: boolean;
+
+    /**
+     * When applied, forces grid to wrap columns to the new line if no space is left.
+     * @type boolean
+     * @default true
+     */
+    'wrap'?: boolean;
+
+    /**
+     * When applied, sets `flex-wrap: nowrap` and all columns will be put in single line.
+     * @type boolean
+     * @default false
+     */
+    'no-wrap'?: boolean;
+
+    /**
+     * When applied, sets `flex-wrap: wrap-reverse` and gives you a grid that wraps in reverse.
+     * @type boolean
+     * @default false
+     */
+    'wrap-reverse'?: boolean;
 }
 
 interface GridProps<T> extends React.ClassAttributes<T> {

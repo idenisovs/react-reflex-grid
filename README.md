@@ -15,13 +15,19 @@ The following properties may be set:
 - `hidden` - allow to hide whole row at the specific breakpoints. Allowed breakpoints: XXS, XS, SM, MD, LG, XLG. Example: `<Container hidden="xs,sm">...</Container>"`.
 
 ### Row
+
 Container for columns. The following properties may be set:
+
 - `bleed` - remove the internal padding on the entire grid.
 - `className` - additional CSS classes for component.
 - `hidden` - allow to hide whole row at the specific breakpoints. Allowed breakpoints: XXS, XS, SM, MD, LG, XLG. Example: `<Row hidden="xs,sm">...</Col>"`.
 - `align` - when this will be applied to `Row`, then columns will be collapsed to content and aligned to vertical position, as it is set by value of `align`.  It can be set in the following way: `<Row align=["start"|"center"|"end"]>...</Row>`
 - `direction-row-reverse`, `direction-column`, `direction-column-reversed` - set the direction of columns.
 - `justify-end`, `justify-center`, `justify-space-between`, `justify-space-around` - set the justification of columns.
+- Grid wrapping:
+    - `wrap` - Wrap columns if there is no space left (**default**).
+    - `no-wrap` - Put all columns in single row, even if there is no space left.
+    - `wrap-reverse` - Gives you a grid that wraps in reverse if there is no space left.
 
 ### Col
 Column element. The following properties may be set:
@@ -268,6 +274,22 @@ Take a look on **size** attribute!
     </Col>
     <Col size={6}>
         Second col
+    </Col>
+</Row>
+```
+
+### Grid wrapping
+
+```jsx harmony
+<Row no-wrap>
+    <Col size={4}>
+        First col (4)
+    </Col>
+    <Col size={4}>
+        Second col (4)
+    </Col>
+    <Col size={10}>
+        Last col (10)
     </Col>
 </Row>
 ```
