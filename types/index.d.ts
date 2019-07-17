@@ -81,6 +81,46 @@ interface RowProps extends GridProps<Row> {
     'justify-center'?: boolean;
     'justify-space-between'?: boolean;
     'justify-space-around'?: boolean;
+
+    /**
+     * Sets `align-content: flex-start`
+     * @type boolean
+     * @default false
+     *
+     */
+    'align-content-start'?: boolean;
+
+    /**
+     * Sets `align-content: flex-end`
+     * @type boolean
+     * @default false
+     *
+     */
+    'align-content-end'?: boolean;
+
+    /**
+     * Sets `align-content: center`
+     * @type boolean
+     * @default false
+     *
+     */
+    'align-content-center'?: boolean;
+
+    /**
+     * Sets `align-content: space-between`
+     * @type boolean
+     * @default false
+     *
+     */
+    'align-content-space-between'?: boolean;
+
+    /**
+     * Sets `align-content: space-around`
+     * @type boolean
+     * @default false
+     *
+     */
+    'align-content-space-around'?: boolean;
 }
 
 interface GridProps<T> extends React.ClassAttributes<T> {

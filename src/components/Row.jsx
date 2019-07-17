@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import classNames from 'classnames';
 import AbstractGridComponent from './Abstract.jsx';
 import 'reflex-grid';
@@ -17,13 +17,16 @@ class Row extends AbstractGridComponent {
     }
 
     render() {
-        let bleed = { 'grid-bleed': this.props.bleed };
-        let hidden = this.getHiddenClasses();
-        let align = this.props.align ? 'align-' + this.props.align : null;
-        let direction = this.getDirectionClass();
-        let justify = this.getJustifyClass();
-
-        let classes = classNames("grid", bleed, hidden, align, direction, justify, this.props.className);
+        let classes = classNames(
+            "grid",
+            { 'grid-bleed': this.props.bleed },
+            this.getHiddenClasses(),
+            this.props.align ? 'align-' + this.props.align : null,
+            this.getDirectionClass(),
+            this.getJustifyClass(),
+            this.getAlignContentClass(),
+            this.props.className
+        );
 
         return (
             <div className={classes}>
@@ -59,6 +62,28 @@ class Row extends AbstractGridComponent {
 
         return usedJustifyAttributes.pop();
     }
+
+    getAlignContentClass() {
+        if (this.props['align-content-start']) {
+            return 'align-content-start';
+        }
+
+        if (this.props['align-content-end']) {
+            return 'align-content-end';
+        }
+
+        if (this.props['align-content-center']) {
+            return 'align-content-center';
+        }
+
+        if (this.props['align-content-space-between']) {
+            return 'align-content-space-between';
+        }
+
+        if (this.props['align-content-space-around']) {
+            return 'align-content-space-around';
+        }
+    }
 }
 
 Row.propTypes = {
@@ -72,7 +97,12 @@ Row.propTypes = {
     'justify-end': PropTypes.bool,
     'justify-center': PropTypes.bool,
     'justify-space-between': PropTypes.bool,
-    'justify-space-around': PropTypes.bool
+    'justify-space-around': PropTypes.bool,
+    'align-content-start': PropTypes.bool,
+    'align-content-end': PropTypes.bool,
+    'align-content-center': PropTypes.bool,
+    'align-content-space-between': PropTypes.bool,
+    'align-content-space-around': PropTypes.bool
 };
 
 export default Row;

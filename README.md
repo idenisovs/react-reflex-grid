@@ -35,6 +35,7 @@ For more information about breakpoints, please see [breakpoints](http://reflexgr
 - `hidden` - allow to hide column at the specific breakpoints. Allowed breakpoints: XXS, XS, SM, MD, LG, XLG. Example: `<Col hidden="xs,sm">...</Col>"`.
 - `order` - Set the order, in which specified column will be shown in grid. Takes number as value: `<Col order={1}>...</Col>`
 - `responsive-order` - Set the order in responsive mode. Valid values: `<breakpoint>-<orderNr>[,<breakpoint>-<orderNr>]`, where `breakpoint` is one of: `xs`, `sm`, `md`, `lg`, `xlg` and `orderNr` may be set from `1` to `12`.
+- `align-content-start`, `align-content-end`, `align-content-center`, `align-content-space-between`, `align-content-space-around` - Cross axis positioning.
 
 ## Usage
 
@@ -254,6 +255,19 @@ Take a look on **size** attribute!
     </Col>
     <Col size={4} responsive-order={'md-1,sm-1'}>
         Last col
+    </Col>
+</Row>
+```
+
+### Cross axis positioning
+
+```jsx harmony
+<Row align-content-center>
+    <Col size={6}>
+        First col
+    </Col>
+    <Col size={6}>
+        Second col
     </Col>
 </Row>
 ```
