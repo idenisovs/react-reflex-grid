@@ -6,6 +6,7 @@ import React from 'react';
 import * as PropTypes from 'prop-types';
 import classNames from 'classnames';
 import AbstractGridComponent from './Abstract.jsx';
+import responsiveOrderValidator from '../validators/responsive-order-validator';
 import 'reflex-grid';
 
 class Col extends AbstractGridComponent {
@@ -98,26 +99,7 @@ Col.propTypes = {
     hidden: PropTypes.string,
     bleed: PropTypes.oneOfType([ PropTypes.bool, PropTypes.string ]),
     order: PropTypes.number,
-    'responsive-order': (props, propName, componentName) => {
-        const propValue = props[propName];
-
-        if (!propValue) {
-            return;
-        }
-
-        if (typeof propValue !== 'string') {
-            return new Error(`${propName} should be String!`);
-        }
-
-        const breakpoints = propValue.split(',').map((bp) => bp.trim());
-        const checker = /^(xs|sm|md|lg|xlg)-\d{1,2}$/;
-        const isValid = breakpoints.every(bp => checker.test(bp));
-
-        if (!isValid) {
-            const failedValue = breakpoints.find(bp => !checker.test(bp));
-            return new Error(`${failedValue} is not valid value for property ${propName} of ${componentName} component!`);
-        }
-    }
+    'responsive-order': responsiveOrderValidator
 };
 
 export default Col;

@@ -6,6 +6,7 @@ import React from 'react';
 import * as PropTypes from 'prop-types';
 import classNames from 'classnames';
 import AbstractGridComponent from './Abstract.jsx';
+import noWrapValidator from '../validators/no-wrap-validator';
 import 'reflex-grid';
 
 class Row extends AbstractGridComponent {
@@ -120,24 +121,7 @@ Row.propTypes = {
     'align-content-center': PropTypes.bool,
     'align-content-space-between': PropTypes.bool,
     'align-content-space-around': PropTypes.bool,
-    'no-wrap': (props) => {
-        if (!props['no-wrap']) {
-            return;
-        }
-
-        if (props['no-wrap'] && props['wrap']) {
-            return new Error('no-wrap property shouldn`t be used together with wrap!')
-        }
-
-        if (props['no-wrap'] && props['wrap-reverse']) {
-            return new Error('no-wrap property shouldn`t be used together with wrap-reverse!')
-        }
-
-        if (typeof props['no-wrap'] !== 'boolean') {
-            console.log(typeof props['no-wrap']);
-            return new Error('no-wrap should be boolean!');
-        }
-    },
+    'no-wrap': noWrapValidator,
     'wrap': PropTypes.bool,
     'wrap-reverse': PropTypes.bool
 };
