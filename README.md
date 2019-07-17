@@ -34,6 +34,7 @@ For more information about breakpoints, please see [breakpoints](http://reflexgr
 - `className` - additional CSS classes for component.
 - `hidden` - allow to hide column at the specific breakpoints. Allowed breakpoints: XXS, XS, SM, MD, LG, XLG. Example: `<Col hidden="xs,sm">...</Col>"`.
 - `order` - Set the order, in which specified column will be shown in grid. Takes number as value: `<Col order={1}>...</Col>`
+- `responsive-order` - Set the order in responsive mode. Valid values: `<breakpoint>-<orderNr>[,<breakpoint>-<orderNr>]`, where `breakpoint` is one of: `xs`, `sm`, `md`, `lg`, `xlg` and `orderNr` may be set from `1` to `12`.
 
 ## Usage
 
@@ -105,7 +106,9 @@ or
 ```
 
 ### Container
+
 #### Simple
+
 ```jsx harmony
 <Container>
     <Row>
@@ -115,6 +118,7 @@ or
 ```
 
 #### Container full
+
 ```jsx harmony
 <Container full>
     <Row>
@@ -126,6 +130,7 @@ or
 ### Hidden
 
 #### Col
+
 ```jsx harmony
 <Row>
     <Col auto>
@@ -138,6 +143,7 @@ or
 ```
 
 #### Row
+
 ```jsx harmony
 <Row hidden='xxs,xs,sm'>
     <Col size={6}>
@@ -150,6 +156,7 @@ or
 ```
 
 #### Container
+
 ```jsx harmony
 <Container hidden='xxs,xs,sm'>
     <Row>
@@ -164,6 +171,7 @@ or
 ```
 
 ### Cross-Axis Align
+
 ```jsx harmony
 <Row align="start">
     <Col size={4}>
@@ -179,6 +187,7 @@ or
 ```
 
 ### Ordering
+
 ```jsx harmony
 <Row>
     <Col size={3} order={2}>
@@ -197,6 +206,7 @@ or
 ```
 
 ### Direction
+
 ```jsx harmony
 <Row direction-column-reversed>
     <Col size={3}>
@@ -215,6 +225,7 @@ or
 ```
 
 ### Justification
+
 Take a look on **size** attribute!
 
 ```jsx harmony
@@ -227,6 +238,22 @@ Take a look on **size** attribute!
     </Col>
     <Col size={3}>
         First appear years night there the in them rule.
+    </Col>
+</Row>
+```
+
+### Responsive order
+
+```jsx harmony
+<Row>
+    <Col size={4} responsive-order={'md-2,sm-3'}>
+        First col
+    </Col>
+    <Col size={4} responsive-order={'md-3,sm-2'}>
+        Second col
+    </Col>
+    <Col size={4} responsive-order={'md-1,sm-1'}>
+        Last col
     </Col>
 </Row>
 ```

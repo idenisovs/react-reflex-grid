@@ -22,19 +22,23 @@ class Col extends AbstractGridComponent {
     }
 
     render() {
-        let className = this.makeClassName();
-        let bleed = this.getBleedClass();
-        let hidden = this.getHiddenClasses();
-        let order = this.props.order ? 'order-' + this.props.order : null;
+        const columnClasses = classNames(
+            this.makeColClass(),
+            this.getBleedClass(),
+            this.getHiddenClasses(),
+            this.props.order ? 'order-' + this.props.order : null,
+            this.getResponsiveOrderClasses(),
+            this.props.className
+        );
 
         return (
-            <div className={classNames(className, bleed, hidden, order, this.props.className)}>
+            <div className={columnClasses}>
                 {this.props.children}
             </div>
         );
     }
 
-    makeClassName() {
+    makeColClass() {
         if (this.props.col) {
             console.warn('col property is deprecated!');
             return 'col-' + this.props.col;
@@ -72,6 +76,19 @@ class Col extends AbstractGridComponent {
                 return { 'col-bleed': this.props.bleed };
         }
     }
+
+    getResponsiveOrderClasses() {
+        const responsiveOrder = this.props['responsive-order'];
+
+        if (!responsiveOrder) {
+            return;
+        }
+
+        return responsiveOrder
+            .split(',')
+            .map(bp => bp.trim())
+            .map(bp => 'order-' + bp);
+    }
 }
 
 Col.propTypes = {
@@ -80,7 +97,27 @@ Col.propTypes = {
     auto: PropTypes.bool,
     hidden: PropTypes.string,
     bleed: PropTypes.oneOfType([ PropTypes.bool, PropTypes.string ]),
-    order: PropTypes.number
+    order: PropTypes.number,
+    'responsive-order': (props, propName, componentName) => {
+        const propValue = props[propName];
+
+        if (!propValue) {
+            return;
+        }
+
+        if (typeof propValue !== 'string') {
+            return new Error(`${propName} should be String!`);
+        }
+
+        const breakpoints = propValue.split(',').map((bp) => bp.trim());
+        const checker = /^(xs|sm|md|lg|xlg)-\d{1,2}$/;
+        const isValid = breakpoints.every(bp => checker.test(bp));
+
+        if (!isValid) {
+            const failedValue = breakpoints.find(bp => !checker.test(bp));
+            return new Error(`${failedValue} is not valid value for property ${propName} of ${componentName} component!`);
+        }
+    }
 };
 
 export default Col;

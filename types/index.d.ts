@@ -36,28 +36,35 @@ interface ColProps extends GridProps<Col> {
      * Removes internal padding from a single column element
      * @type boolean - Removes internal padding if true.
      */
-    bleed?: boolean | string,
+    bleed?: boolean | string;
 
     /**
      * The size of column (from 1 to 12).
      * @type number
      */
-    size: number,
+    size: number;
 
     /**
      * Set the size of column.
      * @type string
      * @deprecated Use size param instead!
      */
-    col?: string,
+    col?: string;
 
     /**
      * @type boolean
      * @default false
      */
-    auto?: boolean,
+    auto?: boolean;
 
-    order?: number
+    order?: number;
+
+    /**
+     * Set the Order in responsive mode.
+     * @example xs-1,sm-2,md-3,lg-4,xlg-5
+     * @type string
+     */
+    'responsive-order'?: string;
 }
 
 interface RowProps extends GridProps<Row> {
