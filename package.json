@@ -22,22 +22,22 @@
   "author": "I. Denisovs",
   "license": "MIT",
   "dependencies": {
-    "classnames": "^2.2.6",
+    "classnames": "^2.3.1",
     "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "reflex-grid": "^2.0.4"
+    "react": "^17.0.2",
+    "reflex-grid": "^2.0.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.1",
-    "@babel/preset-env": "^7.11.0",
-    "@babel/preset-react": "^7.10.4",
-    "@types/prop-types": "^15.7.3",
-    "@types/react": "^16.9.46",
-    "babel-loader": "^8.1.0",
-    "css-loader": "^4.2.1",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-react": "^7.14.5",
+    "@types/prop-types": "^15.7.4",
+    "@types/react": "^17.0.26",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.3.0",
     "install": "^0.13.0",
-    "style-loader": "^1.2.1",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "style-loader": "^3.3.0",
+    "webpack": "^5.55.1",
+    "webpack-cli": "^4.8.0"
   }
 }
